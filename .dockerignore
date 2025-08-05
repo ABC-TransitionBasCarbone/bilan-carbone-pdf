@@ -1,0 +1,67 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output (will be created during Docker build)
+dist
+
+# Development files
+src/**/*.test.ts
+src/**/*.spec.ts
+**/*.test.js
+**/*.spec.js
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+notes/
+*.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Environment files
+.env
+.env.dist
+
+# Testing
+coverage/
+.nyc_output
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Linting
+.eslintcache
+.prettiercache
+
+# Husky
+.husky/
+
+# Temporary files
+tmp/
+temp/
