@@ -10,8 +10,8 @@ services:
       - PORT=8080
       - API_SECRET_KEY=${API_SECRET_KEY}
       - DOCKER_CONTAINER=true
+      - JWT_SECRET=${JWT_SECRET}
       - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
-      - ALLOWED_IPS=${ALLOWED_IPS}
     restart: unless-stopped
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:8080/health']

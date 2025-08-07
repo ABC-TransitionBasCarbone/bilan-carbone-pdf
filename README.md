@@ -53,3 +53,7 @@ docker build --platform=linux/amd64 -t rg.fr-par.scw.cloud/namespace-playwright-
 ```bash
 docker push rg.fr-par.scw.cloud/namespace-playwright-express-pdf/bilan-carbone-pdf:latest
 ```
+
+### 4. Deploy container in Scaleway
+
+In Scaleway Serverless compute > Container, deploy the container for this service manually or find a way to do it with CLI.

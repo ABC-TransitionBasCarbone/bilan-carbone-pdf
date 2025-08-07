@@ -6,6 +6,7 @@ export const authenticateApiKey = (req: Request, res: Response<ErrorResponse>, n
   const expectedKey = process.env.API_SECRET_KEY
 
   if (!apiKey || apiKey !== expectedKey) {
+    console.error('401 - Missing or invalid API key')
     res.status(401).json({ error: 'Unauthorized' })
     return
   }
