@@ -1,10 +1,3 @@
-export interface Cookie {
-  name: string
-  value: string
-  domain: string
-  path: string
-}
-
 export interface PdfOptions {
   format?: string
   printBackground?: boolean
@@ -18,7 +11,6 @@ export interface PdfOptions {
 
 export interface GeneratePdfRequest {
   url: string
-  cookies?: Cookie[]
   pdfOptions?: PdfOptions
 }
 
