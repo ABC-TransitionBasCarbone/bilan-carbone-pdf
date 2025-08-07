@@ -24,6 +24,7 @@ export class PdfGenerationService {
       page.setDefaultNavigationTimeout(30000)
 
       await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 })
+      await page.waitForSelector('[data-testid="pdf-container"]', { timeout: 15000 })
 
       const content = await page.content()
       if (!content.includes('pdf-container')) {
