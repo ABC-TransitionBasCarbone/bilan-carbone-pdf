@@ -11,7 +11,7 @@ export class PdfGenerationService {
     let browser: Browser | null = null
 
     try {
-      jwt.verify(token, process.env.JWT_SECRET!)
+      jwt.verify(token, process.env.JWT_SECRET ?? '')
 
       browser = await chromium.launch({
         headless: true,
@@ -42,10 +42,13 @@ export class PdfGenerationService {
       const pdfBuffer = await page.pdf(finalOptions)
 
       return pdfBuffer
-    } catch (jwtError: any) {
-      if (jwtError.name === 'JsonWebTokenError' || jwtError.name === 'TokenExpiredError') {
+    } catch (jwtError: unknown) {
+      if (
+        jwtError instanceof Error &&
+        (jwtError.name === 'JsonWebTokenError' || jwtError.name === 'TokenExpiredError')
+      ) {
         console.error('500 - Invalid or expired authentication token')
-        throw new Error('Invalid or expired authentication token')
+        throw new Error('Invalid or expired authentication token', { cause: jwtError })
       }
       throw jwtError
     } finally {
