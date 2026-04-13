@@ -147,3 +147,4 @@ dist
 cypress/screenshots
 /notes
 CLAUDE.md
+.claude/
