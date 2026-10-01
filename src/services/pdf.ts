@@ -59,9 +59,15 @@ export class PdfGenerationService {
   }
 
   async create(url: string, token: string, pdfOptions?: PdfOptions): Promise<Buffer> {
-    if (this.isRunningInDocker() && url.startsWith('http://localhost:3000')) {
-      // Allows to access the local server from the docker container during local development
-      url = url.replace('http://localhost:3000', 'http://host.docker.internal:3000')
+    const target = new URL(url)
+    if (target.hostname === 'localhost' && target.port === '3000') {
+      if (target.protocol === 'https:') {
+        target.protocol = 'http:'
+      }
+      if (this.isRunningInDocker()) {
+        target.hostname = 'host.docker.internal'
+      }
+      url = target.toString()
     }
 
     return this.generatePdfWithToken(url, token, pdfOptions)
