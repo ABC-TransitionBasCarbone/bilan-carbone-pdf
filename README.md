@@ -18,6 +18,7 @@ Install dependencies:
 
 ```bash
 yarn install
+yarn playwright install chromium
 ```
 
 ### Run locally in development mode
