@@ -18,6 +18,7 @@ Install dependencies:
 
 ```bash
 yarn install
+yarn upgrade-interactive --latest
 yarn playwright install chromium
 ```
 
